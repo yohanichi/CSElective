@@ -4,13 +4,22 @@
     "api/index.php": {
       "runtime": "php:8.2",
       "memory": 3008,
-      "maxDuration": 30
+      "maxDuration": 30,
+      "includeFiles": "**"
     }
   },
   "routes": [
     {
-      "src": "^/(.*)$",
-      "dest": "/api/index.php"
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/storage/(.*)",
+      "dest": "/storage/$1"
+    },
+    {
+      "src": "/(.*)$",
+      "dest": "/api/index.php?path=$1"
     }
   ]
 }
