@@ -9,20 +9,8 @@
   },
   "routes": [
     {
-      "src": "/public/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=3600"
-      },
-      "dest": "/public/$1"
-    },
-    {
-      "src": "/storage/(.*)",
-      "dest": "/storage/$1"
-    },
-    {
-      "src": "/(.*)",
+      "src": "^/(.*)$",
       "dest": "/api/index.php"
     }
-  ],
-  "buildCommand": "composer install && npm install && npm run build && php artisan config:cache"
+  ]
 }
