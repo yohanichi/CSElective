@@ -1,22 +1,26 @@
 {
   "version": 2,
-  "public": "public",
   "functions": {
     "api/index.php": {
+      "runtime": "php:8.2",
+      "memory": 1024,
+      "maxDuration": 60
+    },
+    "api/health.php": {
       "runtime": "php:8.2"
     }
   },
   "routes": [
     {
-      "src": "/(.+)$",
-      "dest": "/api/index.php"
+      "src": "/health",
+      "dest": "/api/health.php"
     },
     {
-      "src": "^/(?:.+/)?.+\\..+$",
-      "status": 404
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*)$",
       "dest": "/api/index.php"
     }
   ]
