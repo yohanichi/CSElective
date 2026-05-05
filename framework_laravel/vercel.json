@@ -6,6 +6,11 @@
       "memory": 3008,
       "maxDuration": 30,
       "includeFiles": "**"
+    },
+    "api/debug.php": {
+      "runtime": "php:8.2",
+      "memory": 512,
+      "maxDuration": 10
     }
   },
   "routes": [
@@ -18,8 +23,13 @@
       "dest": "/storage/$1"
     },
     {
+      "src": "/api/debug.php",
+      "dest": "/api/debug.php"
+    },
+    {
       "src": "/(.*)$",
       "dest": "/api/index.php?path=$1"
     }
-  ]
+  ],
+  "buildCommand": "composer install --no-dev --optimize-autoloader && npm install && npm run build && php artisan config:cache && php artisan route:cache && php artisan key:generate --force || true"
 }
