@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "framework": "laravel",
+  "functions": {
+    "api/index.php": {
+      "runtime": "php:8.2"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)$",
+      "dest": "/public/index.php"
+    }
+  ],
+  "env": {
+    "APP_DEBUG": "false",
+    "APP_ENV": "production"
+  }
+}

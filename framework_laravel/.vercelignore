@@ -1,0 +1,7 @@
+storage/logs
+.env.example
+database/seeders
+tests
+node_modules
+.git
+.gitignore
